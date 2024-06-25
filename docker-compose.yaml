@@ -107,23 +107,6 @@ services:
       POSTFIXADMIN_DB_NAME: ${POSTFIXADMIN_DB_NAME}
       POSTFIXADMIN_DB_PASSWORD: ${POSTFIXADMIN_DB_PASSWORD}
 
-  rainloop:
-    build:
-      context: build/rainloop/
-    container_name: ${COMPOSE_PROJECT_NAME}-rainloop
-    env_file:
-      - .env
-    ports:
-      - "8888:8888"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-      - ./volumes/rainloop/data:/rainloop/data:rw
-    networks:
-      lan:
-        ipv4_address: ${PROJECT_IP_MASK}.6
-    restart: always
-
   redis:
     image: redis:6
     container_name: ${COMPOSE_PROJECT_NAME}-redis
