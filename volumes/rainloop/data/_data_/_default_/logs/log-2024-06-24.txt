@@ -1,0 +1,390 @@
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:00:12.330][33bae489] INFO[DATA]: [DATE:24.06.24][OFFSET:-00][RL:1.13.0][PHP:7.3.14][IP:][PID:18][nginx/1.16.1][fpm-fcgi]
+[07:00:12.333][33bae489] INFO[DATA]: [Suhosin:off][APC:off][MB:off][PDO:pgsql,sqlite,mysql][Streams:tcp,udp,unix,udg,ssl,tls,tlsv1.0,tlsv1.1,tlsv1.2]
+[07:00:12.333][33bae489] REQUEST[NOTE]: [POST] http://192.168.251.3:8888/?/Ajax/&q[]=/_1ymKvp1Xqyg06693aOmyV-wUsD0Jeh4ms_qwH1_OLmeIqA0ZtgwnINN40i5MYExb0yJLzGy4arz0t3yylHJzHL8eD9bJO-AndnGmDhqhsWLTRHIXYNC1vfSlR7lRtZuZN-zXNo03Qr98S-nbQY7XCk7rz6B9B1QLZVSg6VzrgEWLAVUDKe7A7OrOQSTvA9MtWcZ7n_-TLFsJLwJ2JaOeC8nHdmqyNcVNeyKUDCv2LtlMZMEESuSLTMrzZMcUmPesaQuRG7FCIPz57BY0Ign2PzK_4smqd3RNd4GI_LG6wwqIe4WTbQYsTeDovLyBfGxKPRfAhiWSPVuAVXqUO9dFRxssOSV_y1V8xP_YQjtVyIh2K7ZgtaSFpfzI_r1MLglN/
+[07:00:12.336][33bae489] AJAX[NOTE]: Action: DoFolderInformation
+[07:00:12.337][33bae489] POST[DATA]: {"Folder":"INBOX","FlagsUids":"","UidNext":"","Action":"FolderInformation","XToken":"9831014f8e3b71bea68ca60d164d58f7"}
+[07:00:12.354][33bae489] IMAP[NOTE]: Start connection to "tcp://172.23.1.4:143"
+[07:00:12.356][33bae489] IMAP[NOTE]: Connected (success)
+[07:00:12.368][33bae489] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN AUTH=LOGIN] MAIL_HOST MUA ready
+
+[07:00:12.368][33bae489] IMAP[DATA]: > TAG1 AUTHENTICATE PLAIN
+
+[07:00:12.373][33bae489] IMAP[DATA]: < + 
+
+[07:00:12.373][33bae489] IMAP[SECURE]: > *******
+
+[07:00:12.435][33bae489] IMAP[DATA]: < TAG1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY] Logged in
+
+[07:00:12.436][33bae489] IMAP[DATA]: > TAG2 CAPABILITY
+
+[07:00:12.438][33bae489] IMAP[DATA]: < * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY
+
+[07:00:12.438][33bae489] IMAP[DATA]: < TAG2 OK Capability completed (0.001 + 0.000 secs).
+
+[07:00:12.438][33bae489] IMAP[DATA]: > TAG3 STATUS "INBOX" (MESSAGES UNSEEN UIDNEXT HIGHESTMODSEQ)
+
+[07:00:12.441][33bae489] IMAP[DATA]: < TAG3 NO [SERVERBUG] Internal error occurred. Refer to server log for more information. [2024-06-24 07:00:12] (0.003 + 0.000 + 0.002 secs).
+
+--- FlushLogCache: Trigger
+[07:00:12.443][33bae489] IMAP[WARNING]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+[07:00:12.445][33bae489] INFO[ERROR]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+
+Next RainLoop\Exceptions\ClientException: MailServerError[901] in /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php:5725
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#4 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#5 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#6 /rainloop/index.php(13): include('/rainloop/rainl...')
+#7 {main}
+[07:00:12.445][33bae489] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":901,"ErrorMessage":"","ErrorMessageAdditional":"","Time":171}
+[07:00:12.459][33bae489] IMAP[DATA]: > TAG4 LOGOUT\r\n
+[07:00:12.459][33bae489] IMAP[DATA]: < * BYE Logging out\r\n
+[07:00:12.459][33bae489] IMAP[DATA]: < TAG4 OK Logout completed (0.001 + 0.000 secs).\r\n
+[07:00:12.460][33bae489] IMAP[NOTE]: Disconnected from "tcp://172.23.1.4:143" (success)
+[07:00:12.460][33bae489] INFO[MEMORY]: Memory peak usage: 6MB
+[07:00:12.461][33bae489] INFO[TIME]: Time delta: 0.17728114128113
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:02:12.281][1edc46cb] INFO[DATA]: [DATE:24.06.24][OFFSET:-00][RL:1.13.0][PHP:7.3.14][IP:][PID:19][nginx/1.16.1][fpm-fcgi]
+[07:02:12.281][1edc46cb] INFO[DATA]: [Suhosin:off][APC:off][MB:off][PDO:pgsql,sqlite,mysql][Streams:tcp,udp,unix,udg,ssl,tls,tlsv1.0,tlsv1.1,tlsv1.2]
+[07:02:12.281][1edc46cb] REQUEST[NOTE]: [POST] http://192.168.251.3:8888/?/Ajax/&q[]=/_1ymKvp1Xqyg06693aOmyV-wUsD0Jeh4ms_qwH1_OLmeIqA0ZtgwnINN40i5MYExb0yJLzGy4arz0t3yylHJzHL8eD9bJO-AndnGmDhqhsWLTRHIXYNC1vfSlR7lRtZuZN-zXNo03Qr98S-nbQY7XCk7rz6B9B1QLZVSg6VzrgEWLAVUDKe7A7OrOQSTvA9MtWcZ7n_-TLFsJLwJ2JaOeC8nHdmqyNcVNeyKUDCv2LtlMZMEESuSLTMrzZMcUmPesaQuRG7FCIPz57BY0Ign2PzK_4smqd3RNd4GI_LG6wwqIe4WTbQYsTeDovLyBfGxKPRfAhiWSPVuAVXqUO9dFRxssOSV_y1V8xP_YQjtVyIh2K7ZgtaSFpfzI_r1MLglN/
+[07:02:12.284][1edc46cb] AJAX[NOTE]: Action: DoFolderInformation
+[07:02:12.284][1edc46cb] POST[DATA]: {"Folder":"INBOX","FlagsUids":"","UidNext":"","Action":"FolderInformation","XToken":"9831014f8e3b71bea68ca60d164d58f7"}
+[07:02:12.293][1edc46cb] IMAP[NOTE]: Start connection to "tcp://172.23.1.4:143"
+[07:02:12.299][1edc46cb] IMAP[NOTE]: Connected (success)
+[07:02:12.299][1edc46cb] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN AUTH=LOGIN] MAIL_HOST MUA ready
+
+[07:02:12.302][1edc46cb] IMAP[DATA]: > TAG1 AUTHENTICATE PLAIN
+
+[07:02:12.302][1edc46cb] IMAP[DATA]: < + 
+
+[07:02:12.302][1edc46cb] IMAP[SECURE]: > *******
+
+[07:02:12.314][1edc46cb] IMAP[DATA]: < TAG1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY] Logged in
+
+[07:02:12.314][1edc46cb] IMAP[DATA]: > TAG2 CAPABILITY
+
+[07:02:12.315][1edc46cb] IMAP[DATA]: < * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY
+
+[07:02:12.315][1edc46cb] IMAP[DATA]: < TAG2 OK Capability completed (0.001 + 0.000 secs).
+
+[07:02:12.315][1edc46cb] IMAP[DATA]: > TAG3 STATUS "INBOX" (MESSAGES UNSEEN UIDNEXT HIGHESTMODSEQ)
+
+[07:02:12.316][1edc46cb] IMAP[DATA]: < TAG3 NO [SERVERBUG] Internal error occurred. Refer to server log for more information. [2024-06-24 07:02:12] (0.002 + 0.000 + 0.001 secs).
+
+--- FlushLogCache: Trigger
+[07:02:12.317][1edc46cb] IMAP[WARNING]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+[07:02:12.318][1edc46cb] INFO[ERROR]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+
+Next RainLoop\Exceptions\ClientException: MailServerError[901] in /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php:5725
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#4 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#5 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#6 /rainloop/index.php(13): include('/rainloop/rainl...')
+#7 {main}
+[07:02:12.318][1edc46cb] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":901,"ErrorMessage":"","ErrorMessageAdditional":"","Time":72}
+[07:02:12.330][1edc46cb] IMAP[DATA]: > TAG4 LOGOUT\r\n
+[07:02:12.331][1edc46cb] IMAP[DATA]: < * BYE Logging out\r\n
+[07:02:12.331][1edc46cb] IMAP[DATA]: < TAG4 OK Logout completed (0.001 + 0.000 secs).\r\n
+[07:02:12.332][1edc46cb] IMAP[NOTE]: Disconnected from "tcp://172.23.1.4:143" (success)
+[07:02:12.332][1edc46cb] INFO[MEMORY]: Memory peak usage: 6MB
+[07:02:12.332][1edc46cb] INFO[TIME]: Time delta: 0.084789991378784
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:04:13.174][44e21673] INFO[DATA]: [DATE:24.06.24][OFFSET:-00][RL:1.13.0][PHP:7.3.14][IP:][PID:20][nginx/1.16.1][fpm-fcgi]
+[07:04:13.175][44e21673] INFO[DATA]: [Suhosin:off][APC:off][MB:off][PDO:pgsql,sqlite,mysql][Streams:tcp,udp,unix,udg,ssl,tls,tlsv1.0,tlsv1.1,tlsv1.2]
+[07:04:13.175][44e21673] REQUEST[NOTE]: [POST] http://192.168.251.3:8888/?/Ajax/&q[]=/_1ymKvp1Xqyg06693aOmyV-wUsD0Jeh4ms_qwH1_OLmeIqA0ZtgwnINN40i5MYExb0yJLzGy4arz0t3yylHJzHL8eD9bJO-AndnGmDhqhsWLTRHIXYNC1vfSlR7lRtZuZN-zXNo03Qr98S-nbQY7XCk7rz6B9B1QLZVSg6VzrgEWLAVUDKe7A7OrOQSTvA9MtWcZ7n_-TLFsJLwJ2JaOeC8nHdmqyNcVNeyKUDCv2LtlMZMEESuSLTMrzZMcUmPesaQuRG7FCIPz57BY0Ign2PzK_4smqd3RNd4GI_LG6wwqIe4WTbQYsTeDovLyBfGxKPRfAhiWSPVuAVXqUO9dFRxssOSV_y1V8xP_YQjtVyIh2K7ZgtaSFpfzI_r1MLglN/
+[07:04:13.177][44e21673] AJAX[NOTE]: Action: DoFolderInformation
+[07:04:13.177][44e21673] POST[DATA]: {"Folder":"INBOX","FlagsUids":"","UidNext":"","Action":"FolderInformation","XToken":"9831014f8e3b71bea68ca60d164d58f7"}
+[07:04:13.187][44e21673] IMAP[NOTE]: Start connection to "tcp://172.23.1.4:143"
+[07:04:13.193][44e21673] IMAP[NOTE]: Connected (success)
+[07:04:13.194][44e21673] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN AUTH=LOGIN] MAIL_HOST MUA ready
+
+[07:04:13.194][44e21673] IMAP[DATA]: > TAG1 AUTHENTICATE PLAIN
+
+[07:04:13.195][44e21673] IMAP[DATA]: < + 
+
+[07:04:13.195][44e21673] IMAP[SECURE]: > *******
+
+[07:04:13.204][44e21673] IMAP[DATA]: < TAG1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY] Logged in
+
+[07:04:13.204][44e21673] IMAP[DATA]: > TAG2 CAPABILITY
+
+[07:04:13.205][44e21673] IMAP[DATA]: < * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY
+
+[07:04:13.205][44e21673] IMAP[DATA]: < TAG2 OK Capability completed (0.001 + 0.000 secs).
+
+[07:04:13.205][44e21673] IMAP[DATA]: > TAG3 STATUS "INBOX" (MESSAGES UNSEEN UIDNEXT HIGHESTMODSEQ)
+
+[07:04:13.207][44e21673] IMAP[DATA]: < TAG3 NO [SERVERBUG] Internal error occurred. Refer to server log for more information. [2024-06-24 07:04:13] (0.002 + 0.000 + 0.001 secs).
+
+--- FlushLogCache: Trigger
+[07:04:13.207][44e21673] IMAP[WARNING]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+[07:04:13.208][44e21673] INFO[ERROR]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+
+Next RainLoop\Exceptions\ClientException: MailServerError[901] in /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php:5725
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#4 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#5 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#6 /rainloop/index.php(13): include('/rainloop/rainl...')
+#7 {main}
+[07:04:13.208][44e21673] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":901,"ErrorMessage":"","ErrorMessageAdditional":"","Time":70}
+[07:04:13.220][44e21673] IMAP[DATA]: > TAG4 LOGOUT\r\n
+[07:04:13.220][44e21673] IMAP[DATA]: < * BYE Logging out\r\n
+[07:04:13.221][44e21673] IMAP[DATA]: < TAG4 OK Logout completed (0.001 + 0.000 secs).\r\n
+[07:04:13.221][44e21673] IMAP[NOTE]: Disconnected from "tcp://172.23.1.4:143" (success)
+[07:04:13.222][44e21673] INFO[MEMORY]: Memory peak usage: 6MB
+[07:04:13.222][44e21673] INFO[TIME]: Time delta: 0.082666158676147
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:06:13.179][db24e2ee] INFO[DATA]: [DATE:24.06.24][OFFSET:-00][RL:1.13.0][PHP:7.3.14][IP:][PID:21][nginx/1.16.1][fpm-fcgi]
+[07:06:13.179][db24e2ee] INFO[DATA]: [Suhosin:off][APC:off][MB:off][PDO:pgsql,sqlite,mysql][Streams:tcp,udp,unix,udg,ssl,tls,tlsv1.0,tlsv1.1,tlsv1.2]
+[07:06:13.179][db24e2ee] REQUEST[NOTE]: [POST] http://192.168.251.3:8888/?/Ajax/&q[]=/_1ymKvp1Xqyg06693aOmyV-wUsD0Jeh4ms_qwH1_OLmeIqA0ZtgwnINN40i5MYExb0yJLzGy4arz0t3yylHJzHL8eD9bJO-AndnGmDhqhsWLTRHIXYNC1vfSlR7lRtZuZN-zXNo03Qr98S-nbQY7XCk7rz6B9B1QLZVSg6VzrgEWLAVUDKe7A7OrOQSTvA9MtWcZ7n_-TLFsJLwJ2JaOeC8nHdmqyNcVNeyKUDCv2LtlMZMEESuSLTMrzZMcUmPesaQuRG7FCIPz57BY0Ign2PzK_4smqd3RNd4GI_LG6wwqIe4WTbQYsTeDovLyBfGxKPRfAhiWSPVuAVXqUO9dFRxssOSV_y1V8xP_YQjtVyIh2K7ZgtaSFpfzI_r1MLglN/
+[07:06:13.182][db24e2ee] AJAX[NOTE]: Action: DoFolderInformation
+[07:06:13.182][db24e2ee] POST[DATA]: {"Folder":"INBOX","FlagsUids":"","UidNext":"","Action":"FolderInformation","XToken":"9831014f8e3b71bea68ca60d164d58f7"}
+[07:06:13.193][db24e2ee] IMAP[NOTE]: Start connection to "tcp://172.23.1.4:143"
+[07:06:13.198][db24e2ee] IMAP[NOTE]: Connected (success)
+[07:06:13.198][db24e2ee] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN AUTH=LOGIN] MAIL_HOST MUA ready
+
+[07:06:13.198][db24e2ee] IMAP[DATA]: > TAG1 AUTHENTICATE PLAIN
+
+[07:06:13.199][db24e2ee] IMAP[DATA]: < + 
+
+[07:06:13.199][db24e2ee] IMAP[SECURE]: > *******
+
+[07:06:13.210][db24e2ee] IMAP[DATA]: < TAG1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY] Logged in
+
+[07:06:13.210][db24e2ee] IMAP[DATA]: > TAG2 CAPABILITY
+
+[07:06:13.211][db24e2ee] IMAP[DATA]: < * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY
+
+[07:06:13.211][db24e2ee] IMAP[DATA]: < TAG2 OK Capability completed (0.001 + 0.000 secs).
+
+[07:06:13.211][db24e2ee] IMAP[DATA]: > TAG3 STATUS "INBOX" (MESSAGES UNSEEN UIDNEXT HIGHESTMODSEQ)
+
+[07:06:13.213][db24e2ee] IMAP[DATA]: < TAG3 NO [SERVERBUG] Internal error occurred. Refer to server log for more information. [2024-06-24 07:06:13] (0.002 + 0.000 + 0.001 secs).
+
+--- FlushLogCache: Trigger
+[07:06:13.213][db24e2ee] IMAP[WARNING]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+[07:06:13.214][db24e2ee] INFO[ERROR]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+
+Next RainLoop\Exceptions\ClientException: MailServerError[901] in /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php:5725
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#4 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#5 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#6 /rainloop/index.php(13): include('/rainloop/rainl...')
+#7 {main}
+[07:06:13.215][db24e2ee] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":901,"ErrorMessage":"","ErrorMessageAdditional":"","Time":74}
+[07:06:13.226][db24e2ee] IMAP[DATA]: > TAG4 LOGOUT\r\n
+[07:06:13.227][db24e2ee] IMAP[DATA]: < * BYE Logging out\r\n
+[07:06:13.227][db24e2ee] IMAP[DATA]: < TAG4 OK Logout completed (0.001 + 0.000 secs).\r\n
+[07:06:13.228][db24e2ee] IMAP[NOTE]: Disconnected from "tcp://172.23.1.4:143" (success)
+[07:06:13.228][db24e2ee] INFO[MEMORY]: Memory peak usage: 6MB
+[07:06:13.228][db24e2ee] INFO[TIME]: Time delta: 0.08629298210144
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:08:13.177][7e8814ad] INFO[DATA]: [DATE:24.06.24][OFFSET:-00][RL:1.13.0][PHP:7.3.14][IP:][PID:22][nginx/1.16.1][fpm-fcgi]
+[07:08:13.177][7e8814ad] INFO[DATA]: [Suhosin:off][APC:off][MB:off][PDO:pgsql,sqlite,mysql][Streams:tcp,udp,unix,udg,ssl,tls,tlsv1.0,tlsv1.1,tlsv1.2]
+[07:08:13.177][7e8814ad] REQUEST[NOTE]: [POST] http://192.168.251.3:8888/?/Ajax/&q[]=/_1ymKvp1Xqyg06693aOmyV-wUsD0Jeh4ms_qwH1_OLmeIqA0ZtgwnINN40i5MYExb0yJLzGy4arz0t3yylHJzHL8eD9bJO-AndnGmDhqhsWLTRHIXYNC1vfSlR7lRtZuZN-zXNo03Qr98S-nbQY7XCk7rz6B9B1QLZVSg6VzrgEWLAVUDKe7A7OrOQSTvA9MtWcZ7n_-TLFsJLwJ2JaOeC8nHdmqyNcVNeyKUDCv2LtlMZMEESuSLTMrzZMcUmPesaQuRG7FCIPz57BY0Ign2PzK_4smqd3RNd4GI_LG6wwqIe4WTbQYsTeDovLyBfGxKPRfAhiWSPVuAVXqUO9dFRxssOSV_y1V8xP_YQjtVyIh2K7ZgtaSFpfzI_r1MLglN/
+[07:08:13.180][7e8814ad] AJAX[NOTE]: Action: DoFolderInformation
+[07:08:13.180][7e8814ad] POST[DATA]: {"Folder":"INBOX","FlagsUids":"","UidNext":"","Action":"FolderInformation","XToken":"9831014f8e3b71bea68ca60d164d58f7"}
+[07:08:13.190][7e8814ad] IMAP[NOTE]: Start connection to "tcp://172.23.1.4:143"
+[07:08:13.194][7e8814ad] IMAP[NOTE]: Connected (success)
+[07:08:13.194][7e8814ad] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN AUTH=LOGIN] MAIL_HOST MUA ready
+
+[07:08:13.194][7e8814ad] IMAP[DATA]: > TAG1 AUTHENTICATE PLAIN
+
+[07:08:13.198][7e8814ad] IMAP[DATA]: < + 
+
+[07:08:13.198][7e8814ad] IMAP[SECURE]: > *******
+
+[07:08:13.207][7e8814ad] IMAP[DATA]: < TAG1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY] Logged in
+
+[07:08:13.207][7e8814ad] IMAP[DATA]: > TAG2 CAPABILITY
+
+[07:08:13.208][7e8814ad] IMAP[DATA]: < * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY
+
+[07:08:13.208][7e8814ad] IMAP[DATA]: < TAG2 OK Capability completed (0.001 + 0.000 secs).
+
+[07:08:13.208][7e8814ad] IMAP[DATA]: > TAG3 STATUS "INBOX" (MESSAGES UNSEEN UIDNEXT HIGHESTMODSEQ)
+
+[07:08:13.210][7e8814ad] IMAP[DATA]: < TAG3 NO [SERVERBUG] Internal error occurred. Refer to server log for more information. [2024-06-24 07:08:13] (0.002 + 0.000 + 0.001 secs).
+
+--- FlushLogCache: Trigger
+[07:08:13.210][7e8814ad] IMAP[WARNING]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+[07:08:13.211][7e8814ad] INFO[ERROR]: MailSo\Imap\Exceptions\NegativeResponseException: MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1876) in /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php:1876
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(1953): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Imap/ImapClient.php(643): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(746): MailSo\Imap\ImapClient->FolderStatus('INBOX', Array)
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/MailSo/Mail/MailClient.php(927): MailSo\Mail\MailClient->initFolderValues('INBOX', 0, 0, '0', '')
+#4 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php(5704): MailSo\Mail\MailClient->FolderInformation('INBOX', '', Array)
+#5 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#6 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#7 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#8 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#9 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#10 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#11 /rainloop/index.php(13): include('/rainloop/rainl...')
+#12 {main}
+
+Next RainLoop\Exceptions\ClientException: MailServerError[901] in /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Actions.php:5725
+Stack trace:
+#0 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/ServiceActions.php(172): RainLoop\Actions->DoFolderInformation()
+#1 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(152): RainLoop\ServiceActions->ServiceAjax('')
+#2 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(62): RainLoop\Service->localHandle()
+#3 /rainloop/rainloop/v/1.13.0/app/libraries/RainLoop/Service.php(85): RainLoop\Service->__construct()
+#4 /rainloop/rainloop/v/1.13.0/app/handle.php(94): RainLoop\Service::Handle()
+#5 /rainloop/rainloop/v/1.13.0/include.php(228): include('/rainloop/rainl...')
+#6 /rainloop/index.php(13): include('/rainloop/rainl...')
+#7 {main}
+[07:08:13.212][7e8814ad] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":901,"ErrorMessage":"","ErrorMessageAdditional":"","Time":70}
+[07:08:13.223][7e8814ad] IMAP[DATA]: > TAG4 LOGOUT\r\n
+[07:08:13.224][7e8814ad] IMAP[DATA]: < * BYE Logging out\r\n
+[07:08:13.224][7e8814ad] IMAP[DATA]: < TAG4 OK Logout completed (0.001 + 0.000 secs).\r\n
+[07:08:13.225][7e8814ad] IMAP[NOTE]: Disconnected from "tcp://172.23.1.4:143" (success)
+[07:08:13.225][7e8814ad] INFO[MEMORY]: Memory peak usage: 6MB
+[07:08:13.225][7e8814ad] INFO[TIME]: Time delta: 0.081783056259155
