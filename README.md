@@ -1,8 +1,13 @@
 # Docker Mail Server
 
+## PostgreSQL
 
-#PostgreSQL
-Up to date(June 2024) PostgreSQL 14 needs to be updated. End of support in November 2026 may cause critical security issues.
+**Up to date(June 2024) PostgreSQL 14 needs to be updated. End of support in November 2026 may cause critical security issues.**
+
+* Настройки в блоке [PostgreSQL](.env)
+* 
+
+
 #Postfixadmin 
  Setup password
  #RoundCube
