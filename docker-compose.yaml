@@ -51,9 +51,8 @@ services:
   dovecot:
     container_name: ${COMPOSE_PROJECT_NAME}-dovecot
     ports:
-      - "143:143"
-      - "993:993"
-      - "995:995"
+      - "993:993" # - SSL/IMAP | 143 - No SSL IMAP
+      - "995:995" # - SSL/POP3 | 110 - No SSL POP3
     build:
       context: build/dovecot/
       args:
@@ -175,9 +174,6 @@ services:
 #        ipv4_address: ${PROJECT_IP_MASK}.9
 #        aliases:
 #         - clamav
-
-
-
 
 networks:
   lan:
