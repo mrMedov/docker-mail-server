@@ -193,24 +193,7 @@ services:
 #        aliases:
 #         - clamav
 
-  roundcube:
-    build:
-      context: build/roundcube/
-    container_name: ${COMPOSE_PROJECT_NAME}-roundcube
-    env_file:
-      - .env
-    ports:
-      - "81:80"
-    environment:
-     - ROUNDCUBEMAIL_DEFAULT_PORT=143
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-      - ./volumes/roundcube/data:/var/www/html:rw
-    networks:
-      lan:
-        ipv4_address: ${PROJECT_IP_MASK}.10
-    restart: always
+
 
 
 networks:
