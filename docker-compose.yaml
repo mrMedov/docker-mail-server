@@ -196,6 +196,8 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}-httpd
     image: httpd:alpine3.20
     restart: always
+    ports:
+      - "83:80"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
