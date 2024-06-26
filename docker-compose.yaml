@@ -204,7 +204,7 @@ services:
       lan:
         ipv4_address: ${PROJECT_IP_MASK}.10
         httpd:
-         - clamav
+         - httpd
 
 
 networks:
