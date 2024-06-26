@@ -192,6 +192,21 @@ services:
         aliases:
          - clamav
 
+  httpd:
+    container_name: ${COMPOSE_PROJECT_NAME}-httpd
+    image: httpd:alpine3.20
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./volumes/etc/httpd:/usr/local/apache2/conf
+    networks:
+      lan:
+        ipv4_address: ${PROJECT_IP_MASK}.10
+        httpd:
+         - clamav
+
+
 networks:
   lan:
     driver: bridge
