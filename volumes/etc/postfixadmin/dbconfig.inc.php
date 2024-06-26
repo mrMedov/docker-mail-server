@@ -9,4 +9,11 @@
 ## you'll probably also want to edit the configuration file mentioned
 ## above too.
 ##
+$dbuser='mailserver';
+$dbpass='Medik24';
+$basepath='';
+$dbname='mailserver_db';
+$dbserver='172.23.1.2';
+$dbport='5432';
+$dbtype='pgsql';
 

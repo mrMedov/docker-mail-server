@@ -1,3 +1,3 @@
 dns {
-         # nameserver = ["46.38.225.230"];
+    #nameserver = ["127.0.0.1"];
 }
